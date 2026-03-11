@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios AWS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #232f3e, #4b6cb7);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+    nav {
+      background: #1b2533;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #fff;
+      margin: 5px 10px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #232f3e;
+    }
+    .section {
+      margin-bottom: 15px;
+    }
+    .section strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #4b6cb7;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      color: white;
+    }
+    .barato { background: #2ecc71; }
+    .medio { background: #f1c40f; color: #000; }
+    .caro { background: #e74c3c; }
+    footer {
+      background: #232f3e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>El recetario del arquitecto (Servicios AWS)</h1>
+  <h2>Rodrigo Arvizu Medina IRD 5A</h2>
+  <p>¿Qué problema resuelven, cuándo usarlos y cuándo no?</p>
+</header>
+
+<nav>
+  <a href="#ec2">EC2</a>
+  <a href="#rds">RDS</a>
+  <a href="#s3">S3</a>
+  <a href="#lb">Load Balancer</a>
+  <a href="#as">Auto Scaling</a>
+  <a href="#cf">CloudFront</a>
+  <a href="#ddb">DynamoDB</a>
+  <a href="#lambda">Lambda</a>
+</nav>
+
+<div class="container">
+
+  <div class="card" id="ec2">
+    <h2>EC2 (Elastic Compute Cloud)</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Permite ejecutar servidores virtuales sin hardware físico.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Aplicaciones web, APIs, control total del sistema.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Tareas pequeñas o procesos eventuales.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Servidor web para una tienda en línea.</div>
+    <div class="section"><strong>Costo</strong><span class="badge medio">Medio</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>Servidores físicos o VMs en otros proveedores.</div>
+  </div>
+
+  <div class="card" id="rds">
+    <h2>RDS (Relational Database Service)</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Administración automática de bases de datos relacionales.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Datos estructurados y relaciones complejas.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Datos no estructurados o proyectos pequeños.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Base de datos de usuarios y pedidos.</div>
+    <div class="section"><strong>Costo</strong><span class="badge caro">Caro</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>Base de datos instalada manualmente en EC2.</div>
+  </div>
+
+  <div class="card" id="s3">
+    <h2>S3 (Simple Storage Service)</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Almacenamiento de archivos seguro y escalable.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Imágenes, videos, backups.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Ejecutar aplicaciones o bases de datos.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Fotos de perfil de usuarios.</div>
+    <div class="section"><strong>Costo</strong><span class="badge barato">Barato</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>Discos locales o servidores de archivos.</div>
+  </div>
+
+  <div class="card" id="lb">
+    <h2>Load Balancer</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Distribuye tráfico para evitar caídas.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Múltiples servidores y alta disponibilidad.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Un solo servidor.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Sitio web con muchos usuarios simultáneos.</div>
+    <div class="section"><strong>Costo</strong><span class="badge medio">Medio</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>Nginx o HAProxy manual.</div>
+  </div>
+
+  <div class="card" id="as">
+    <h2>Auto Scaling</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Escala servidores automáticamente según demanda.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Tráfico variable o picos inesperados.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Tráfico estable.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Venta de boletos en eventos masivos.</div>
+    <div class="section"><strong>Costo</strong><span class="badge medio">Medio</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>Escalado manual.</div>
+  </div>
+
+  <div class="card" id="cf">
+    <h2>CloudFront</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Entrega rápida de contenido global.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Usuarios en distintas regiones.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Apps internas.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Streaming y carga de imágenes.</div>
+    <div class="section"><strong>Costo</strong><span class="badge barato">Barato</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>Otros CDNs o servidores regionales.</div>
+  </div>
+
+  <div class="card" id="ddb">
+    <h2>DynamoDB</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Base de datos NoSQL escalable.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Millones de operaciones rápidas.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Consultas SQL complejas.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Sesiones de usuarios.</div>
+    <div class="section"><strong>Costo</strong><span class="badge medio">Medio</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>MongoDB o Cassandra.</div>
+  </div>
+
+  <div class="card" id="lambda">
+    <h2>Lambda</h2>
+    <div class="section"><strong>¿Qué problema resuelve?</strong>Ejecuta código sin administrar servidores.</div>
+    <div class="section"><strong>¿Cuándo lo usarías?</strong>Eventos, APIs pequeñas.</div>
+    <div class="section"><strong>¿Cuándo NO lo usarías?</strong>Procesos largos.</div>
+    <div class="section"><strong>Ejemplo real de uso</strong>Enviar correos automáticos.</div>
+    <div class="section"><strong>Costo</strong><span class="badge barato">Barato</span></div>
+    <div class="section"><strong>Si desapareciera...</strong>Cron jobs en servidores.</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Proyecto educativo – Servicios AWS</p>
+</footer>
+
+</body>
+</html>
